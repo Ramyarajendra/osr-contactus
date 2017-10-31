@@ -1,0 +1,70 @@
+{%extends 'base.html'%}
+
+{%load static%}
+     <link rel="shortcut icon" href="http://www.elluminati.in/wp-content/uploads/2016/07/favicon.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	 <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css'%}"/>
+
+{%block head%}
+Contact Us
+    {% endblock %}
+{% block 1head %}
+    <style>
+       #map {
+        height: 250px;
+        width: 100%;
+       }
+    </style>
+{%endblock%}
+{%block content%}
+<div class="locate">
+    <h3>LOCATE US</h3>
+    </div>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var osr = {lat: 12.905756, lng: 77.521010};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: osr
+        });
+		google.maps.event.addDomListener(window, "resize", function() {
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center);
+});
+        var marker = new google.maps.Marker({
+          position: osr,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT30pNXw4LmRIQ5Ls19yUSyKZv1mDoEbw&callback=initMap">
+    </script>
+
+	<div id="row"><!--represents each row which contains 2 cards!-->
+	<div class="stay">
+	<h3>STAY CONNECTED</h3>
+	<div class="Social"><!--represents each cards!-->
+	<!-- Add font awesome icons -->
+		<a href="#" class="fa fa-facebook"></a>
+		<a href="#" class="fa fa-twitter"></a>
+    </div>
+    </div>
+    <div class="contact">
+	<h3>CONTACT</h3>
+		<i class="fa fa-map-marker"></i>
+		<span class="w-contacts-item-value">60 Feet Road, Near-BMTC Depot, BEML Layout, RR Nagar, Bengaluru, Karnataka 560098</span><br>
+		<i class="fa fa-phone"></i>
+		<span class="w-contacts-item-value" style="padding-right:0px;">080 2861 2171</span>
+    </div>
+
+</div>
+    <div class="footer">
+    </div>
+
+{%endblock%}
